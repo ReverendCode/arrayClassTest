@@ -1,9 +1,5 @@
 package cs260.vaporware;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Random;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -44,7 +40,6 @@ public class Main {
     //here there be dragons (or just helper functions)
 
     public static void fillArray(ArrayClass array) {//fill an arbitrarily large array with random integers
-        int randInt;
         for (int i=0;i<array.getArraySize();i++) {
            //generate random int from 0-100
             array.addElem((int)(Math.random()*100));
@@ -122,8 +117,7 @@ class ArrayClass {
          if (array[i]>array[swapID]) swapID=i;
         }
         int storeVal=array[swapID];//hold the largest number
-        array[swapID] = array[lastItem-1];//move the last int to the position of the swap
-        delElem();//"remove" the final item from the array
+        unsortDelete(swapID);
         return storeVal; //give the number found to be the largest
     }
     public void deleteDups() {//this should work.. maybe.
@@ -138,8 +132,8 @@ class ArrayClass {
             }
         }
     }
-    private void unsortDelete(int position) {
+    private void unsortDelete(int position) {//"if you have to write it twice, it should be it's own function"
         array[position] = array[lastItem-1];
-        lastItem--;
+        delElem();
     }
 }
