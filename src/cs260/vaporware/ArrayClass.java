@@ -25,17 +25,12 @@ public class ArrayClass {
         else return false;
 
     }
-    public boolean delElem() {
-        if (lastItem>0) {//this assumes a valid range for lastItem.
-            lastItem--;
-            return true;
-        }
-        else return false;
+    private boolean isEmpty() {
+        return lastItem == 0;
     }
-    public int howMany() {
-        return lastItem;
-    }
+
     public String curElems() {
+        if (isEmpty()) return "\nerror, no elements to show.\n";
         String accumInt="";
         for (int i=0; i<lastItem; i++) {
             lineCount++;
@@ -50,6 +45,9 @@ public class ArrayClass {
     public int getArraySize() {
         return arraySize;
     }
+    public int howMany() {
+        return lastItem;
+    }
 
     public int getLargest() {
 
@@ -61,6 +59,7 @@ public class ArrayClass {
         unsortDelete(swapID);
         return storeVal; //give the number found to be the largest
     }
+
     public void deleteDups() {//this should work.. maybe.
 
         for (int i=0;i<lastItem;i++) {
@@ -74,7 +73,8 @@ public class ArrayClass {
         }
     }
     private void unsortDelete(int position) {//"if you have to write it twice, it should be it's own function"
-        array[position] = array[lastItem-1];
-        delElem();
+        array[position] = array[--lastItem];
+        //if (!isEmpty()) lastItem--;
+
     }
 }
