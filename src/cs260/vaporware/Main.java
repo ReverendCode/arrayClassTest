@@ -35,7 +35,7 @@ public class Main {
         System.out.print(emptyArray.curElems()+"\n");
         System.out.print(emptyArray.getLargest());
         sortMe(emptyArray);
-        System.out.print("\nAnd showing proper handing of sorting arrays after removing an item"+ emptyArray.curElems());
+        System.out.print("\nAnd showing proper handing of sorting arrays after removing an item\n"+ emptyArray.curElems());
     }
     //here there be dragons (or just helper functions)
 
