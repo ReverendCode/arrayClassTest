@@ -9,6 +9,7 @@ public class Main {
         System.out.print("\nShow the largest number found in the array: " + testOne.getLargest());
         System.out.print("\nand the next: " + testOne.getLargest());
         System.out.print("\nShow that the largest two have been removed:\n" + testOne.curElems());
+
         ArrayClass testDupes = new ArrayClass(20);
         for (int i = 0; i < 20; i++) {
             if (i < 7) testDupes.addElem(10);//add some guaranteed duplicates to be removed
@@ -17,6 +18,7 @@ public class Main {
         System.out.print("\n\nShow an array with duplicates:\n" + testDupes.curElems());
         testDupes.deleteDups();
         System.out.print("\n\nShow that the duplicates have been deleted:\n" + testDupes.curElems());
+
         ArrayClass unsorted = new ArrayClass();
         fillArray(unsorted);
         System.out.print("\n\nShow unsorted array:\n" + unsorted.curElems());
@@ -29,11 +31,11 @@ public class Main {
         ArrayClass emptyArray = new ArrayClass(10);
         System.out.print("\nTesting an empty array" + emptyArray.curElems());
         fillArray(emptyArray);
+        //sortMe(emptyArray);
         System.out.print(emptyArray.curElems()+"\n");
         System.out.print(emptyArray.getLargest());
-        System.out.print("\n"+emptyArray.curElems());
         sortMe(emptyArray);
-        System.out.print("\nAnd showing proper handing of sorting arrays after removing an item\n"+ emptyArray.curElems());
+        System.out.print("\nAnd showing proper handing of sorting arrays after removing an item"+ emptyArray.curElems());
     }
     //here there be dragons (or just helper functions)
 
@@ -44,12 +46,12 @@ public class Main {
        }
     }
     private static void sortMe(ArrayClass array) {//I don't know if this was supposed to be in the ArrayClass
-        int arraySize = array.getArraySize();         //or just be an example of a sort using getLargest
+        int arraySize = array.howMany();         //or just be an example of a sort using getLargest
         int[] temp = new int[arraySize];         //but there you have it.
-      for (int i = array.howMany()-1; i>=0; i--) {
-          temp[i] = array.getLargest();//this was broken with arrays that had removed an item, then sorted
-      }                                //is fixed now
-        for (int j=0;j<array.howMany();j++) {
+      for (int i = arraySize-1; i>=0; i--) {
+          temp[i] = array.getLargest();
+      }
+        for (int j=0;j<arraySize;j++) {
             array.addElem(temp[j]);
         }
     }
